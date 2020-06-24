@@ -25,3 +25,8 @@ app.use(require("./routes/view.js"));
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
 });
+
+// GET index HTML
+app.get("*", function(req, res) {
+  res.sendFile(__dirname + '/public/index.html');
+});
