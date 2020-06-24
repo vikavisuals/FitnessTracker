@@ -13,6 +13,11 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+// GET index HTML
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + '/public/index.html');
+});
+
 mongoose.connect("mongodb://localhost/workout", {
   useNewUrlParser: true,
   useFindAndModify: false
@@ -24,9 +29,4 @@ app.use(require("./routes/view.js"));
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
-});
-
-// GET index HTML
-app.get("/", function(req, res) {
-  res.sendFile(__dirname + '/public/index.html');
 });
